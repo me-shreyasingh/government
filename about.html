@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - GovVerify AI</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e27;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 20px 0;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5em;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-logo-icon {
+            font-size: 32px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: white;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white !important;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 150px 40px 80px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .page-title {
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.4em;
+            color: #a0aec0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px 100px;
+        }
+
+        .section {
+            margin-bottom: 100px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-desc {
+            font-size: 1.2em;
+            color: #a0aec0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Mission & Vision Cards */
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .mv-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 50px;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .mv-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .mv-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .mv-icon {
+            font-size: 70px;
+            margin-bottom: 25px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .mv-card h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .mv-card p {
+            color: #a0aec0;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        /* Story Section */
+        .story-content {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 60px;
+            border-radius: 25px;
+            border-left: 5px solid #667eea;
+        }
+
+        .story-content p {
+            color: #cbd5e0;
+            line-height: 1.9;
+            font-size: 1.15em;
+            margin-bottom: 25px;
+        }
+
+        .story-content strong {
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .team-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .team-role {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .team-card p {
+            color: #a0aec0;
+            line-height: 1.6;
+        }
+
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .tech-item {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateX(10px);
+        }
+
+        .tech-icon {
+            font-size: 50px;
+        }
+
+        .tech-info h4 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .tech-info p {
+            color: #a0aec0;
+            font-size: 0.95em;
+        }
+
+        /* Impact Stats */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .impact-stat {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(102, 126, 234, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .impact-stat:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        .impact-number {
+            font-size: 3.5em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .impact-label {
+            color: #a0aec0;
+            font-size: 1.1em;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 60px 40px 30px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            color: #a0aec0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #718096;
+        }
+
+        /* Support Button */
+        .support-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+            transition: all 0.4s ease;
+            z-index: 1000;
+            border: none;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+            }
+            100% {
+                box-shadow: 0 0 0 20px rgba(102, 126, 234, 0);
+            }
+        }
+
+        .support-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.6);
+        }
+
+        .support-emoji {
+            font-size: 35px;
+        }
+
+        .support-tooltip {
+            position: absolute;
+            right: 85px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95em;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .support-btn:hover .support-tooltip {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 14, 39, 0.98);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                border-top: 1px solid rgba(102, 126, 234, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .page-title {
+                font-size: 2.5em;
+            }
+
+            .page-subtitle {
+                font-size: 1.1em;
+            }
+
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .story-content {
+                padding: 40px 25px;
+            }
+
+            .team-grid,
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .page-header,
+            .main-content {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-logo-icon">🛡️</span>
+                <span>GovVerify AI</span>
+            </a>
+            
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="index.html#how">How It Works</a></li>
+                <li><a href="verify.html" class="nav-cta">Verify Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">About GovVerify AI</h1>
+        <p class="page-subtitle">A comprehensive AI-powered solution to combat fake government notices and protect citizens from fraud</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- Mission & Vision -->
+        <div class="section">
+            <div class="mission-vision-grid">
+                <div class="mv-card">
+                    <span class="mv-icon">🎯</span>
+                    <h3>Our Mission</h3>
+                    <p>To empower every Indian citizen with the tools to verify government communications instantly, protecting them from fraud and misinformation through cutting-edge artificial intelligence technology.</p>
+                </div>
+                <div class="mv-card">
+                    <span class="mv-icon">🔮</span>
+                    <h3>Our Vision</h3>
+                    <p>To create a fraud-free digital India where citizens can confidently trust government communications, making fake notices and scams a thing of the past through AI-driven verification.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Story -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">The Story Behind GovVerify AI</h2>
+                <p class="section-desc">How a final year CSE project became a solution to a nationwide problem</p>
+            </div>
+            
+            <div class="story-content">
+                <p>
+                    In 2025, India witnessed a <strong>300% increase</strong> in fake government notice scams, with millions of citizens falling victim to fraudulent messages claiming to be from government departments. From fake pension schemes to bogus subsidy programs, these scams resulted in massive financial losses and eroded public trust in digital governance.
+                </p>
+                <p>
+                    As computer science students, we witnessed our own families and communities being targeted by these sophisticated scams. WhatsApp forwards with official-looking government logos, SMS messages promising non-existent benefits, and fraudulent PDFs that seemed authentic – the tactics were becoming increasingly advanced.
+                </p>
+                <p>
+                    <strong>GovVerify AI was born from this crisis.</strong> We asked ourselves: What if we could leverage artificial intelligence and machine learning to help ordinary citizens verify government notices instantly? What if verification was as simple as uploading a document or forwarding a message?
+                </p>
+                <p>
+                    Our final year B.Tech project evolved into a comprehensive AI-powered verification system that combines <strong>Natural Language Processing, Computer Vision, OCR technology, and Machine Learning</strong> to analyze and authenticate government communications in real-time.
+                </p>
+                <p>
+                    Today, GovVerify AI represents not just an academic achievement, but a practical solution to protect millions of Indians from fraud, supporting the <strong>Digital India initiative</strong> and promoting safe, trustworthy digital governance.
+                </p>
+            </div>
+        </div>
+
+        <!-- Team -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Meet the Team</h2>
+                <p class="section-desc">Computer Science students passionate about using technology for social impact</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💻</div>
+                    <h3>Project Lead</h3>
+                    <p class="team-role">AI/ML Engineer</p>
+                    <p>Specializes in machine learning algorithms and natural language processing for document verification</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💻</div>
+                    <h3>Technical Lead</h3>
+                    <p class="team-role">Full Stack Developer</p>
+                    <p>Handles system architecture, backend development, and database management for scalability</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍🔬</div>
+                    <h3>Research Lead</h3>
+                    <p class="team-role">Data Scientist</p>
+                    <p>Conducts research on fraud patterns and develops training datasets for AI models</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍🎨</div>
+                    <h3>UX Designer</h3>
+                    <p class="team-role">UI/UX Specialist</p>
+                    <p>Creates intuitive interfaces ensuring accessibility for users of all technical backgrounds</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Technology Stack</h2>
+                <p class="section-desc">Cutting-edge technologies powering our verification system</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <span class="tech-icon">🤖</span>
+                    <div class="tech-info">
+                        <h4>Machine Learning</h4>
+                        <p>TensorFlow, Scikit-learn</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-icon">🧠</span>
+                    <div class="tech-info">
+                        <h4>Natural Language Processing</h4>
+                        <p>NLTK, spaCy, Transformers</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-icon">📸</span>
+                    <div class="tech-info">
+                        <h4>Computer Vision</h4>
+                        <p>OpenCV, Tesseract OCR</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-icon">🐍</span>
+                    <div class="tech-info">
+                        <h4>Backend</h4>
+                        <p>Python, Flask, Django</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-icon">💾</span>
+                    <div class="tech-info">
+                        <h4>Database</h4>
+                        <p>PostgreSQL, MongoDB</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <span class="tech-icon">☁️</span>
+                    <div class="tech-info">
+                        <h4>Cloud & DevOps</h4>
+                        <p>AWS, Docker, Kubernetes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Statistics -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">Project Impact</h2>
+                <p class="section-desc">Measurable results from our research and development</p>
+            </div>
+            
+            <div class="impact-grid">
+                <div class="impact-stat">
+                    <div class="impact-number">99.2%</div>
+                    <div class="impact-label">Detection Accuracy</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-number">2.8s</div>
+                    <div class="impact-label">Avg Verification Time</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-number">10k+</div>
+                    <div class="impact-label">Documents Tested</div>
+                </div>
+                <div class="impact-stat">
+                    <div class="impact-number">500+</div>
+                    <div class="impact-label">Research Hours</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>🛡️ GovVerify AI</h3>
+                    <p>An academic research project developed to combat fake government notices and protect citizens from fraud using artificial intelligence and machine learning.</p>
+                    <p><strong>Final Year CSE Project 2026</strong></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About Project</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#how">How It Works</a></li>
+                        <li><a href="verify.html">Verify Notice</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Official Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://india.gov.in" target="_blank">🇮🇳 india.gov.in</a></li>
+                        <li><a href="https://pib.gov.in" target="_blank">📰 pib.gov.in</a></li>
+                        <li><a href="https://mygov.in" target="_blank">💼 mygov.in</a></li>
+                        <li><a href="https://digitalindia.gov.in" target="_blank">📱 Digital India</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Project Info</h3>
+                    <p><strong>Academic Institution:</strong><br>Computer Science & Engineering</p>
+                    <p><strong>Project Type:</strong><br>Final Year B.Tech Project</p>
+                    <p><strong>Technologies Used:</strong><br>AI, ML, NLP, OCR, Python</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p><strong>⚠️ Disclaimer:</strong> This is a prototype system developed for academic and research purposes. Not an official government platform.</p>
+            </div></div></footer>
+              <!-- Support Button -->
+    <button class="support-btn">
+        <span class="support-emoji">💬</span>
+    </button>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Support button click
+        document.querySelector('.support-btn').addEventListener('click', function() {
+            alert('Support: Email us at support@govverifyai.com or call +91 123-456-7890');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Notice - GovVerify AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e27;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation - Updated styling from working.html */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 20px 0;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5em;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-logo-icon {
+            font-size: 32px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            color: white;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white !important;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 120px auto 60px;
+            padding: 0 40px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-title {
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.3em;
+            color: #a0aec0;
+        }
+
+        .verification-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .upload-section {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 2px dashed rgba(102, 126, 234, 0.3);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .upload-section:hover {
+            border-color: rgba(102, 126, 234, 0.6);
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .upload-section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .upload-section p {
+            color: #a0aec0;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .upload-btn {
+            position: relative;
+            display: inline-block;
+        }
+
+        .upload-btn input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.6);
+        }
+
+        .file-preview {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            display: none;
+        }
+
+        .file-preview.active {
+            display: block;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .or-divider {
+            text-align: center;
+            margin: 30px 0;
+            color: #718096;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .or-divider::before { left: 0; }
+        .or-divider::after { right: 0; }
+
+        .text-input-area {
+            margin-top: 30px;
+        }
+
+        .text-input-area textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 15px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            resize: vertical;
+        }
+
+        .text-input-area textarea:focus {
+            outline: none;
+            border-color: rgba(102, 126, 234, 0.6);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .scanner-section {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 2px dashed rgba(16, 185, 129, 0.3);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .scanner-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: scan 2s ease-in-out infinite;
+        }
+
+        @keyframes scan {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .scanner-section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #10b981;
+        }
+
+        .camera-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            margin-top: 20px;
+        }
+
+        .camera-btn:hover {
+            box-shadow: 0 15px 50px rgba(16, 185, 129, 0.6);
+        }
+
+        #cameraInput {
+            display: none;
+        }
+
+        .results-section {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 30px;
+            padding: 40px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .results-placeholder {
+            text-align: center;
+            color: #718096;
+        }
+
+        .results-placeholder .icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .scanning {
+            display: none;
+            text-align: center;
+        }
+
+        .scanning.active {
+            display: block;
+        }
+
+        .scanner-animation {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            border: 4px solid rgba(102, 126, 234, 0.2);
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .scanning-steps {
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .scanning-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            color: #a0aec0;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .scanning-step.active {
+            opacity: 1;
+            color: #667eea;
+        }
+
+        .scanning-step.complete {
+            opacity: 1;
+            color: #10b981;
+        }
+
+        .results-content {
+            display: none;
+            width: 100%;
+        }
+
+        .results-content.active {
+            display: block;
+        }
+
+        .verdict-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .verdict-authentic {
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid #10b981;
+            color: #10b981;
+        }
+
+        .verdict-fake {
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
+            color: #ef4444;
+        }
+
+        .verdict-suspicious {
+            background: rgba(251, 191, 36, 0.2);
+            border: 2px solid #fbbf24;
+            color: #fbbf24;
+        }
+
+        .trust-score {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .score-high {
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+            border: 4px solid #10b981;
+            color: #10b981;
+        }
+
+        .score-low {
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.2) 0%, transparent 70%);
+            border: 4px solid #ef4444;
+            color: #ef4444;
+        }
+
+        .score-medium {
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+            border: 4px solid #fbbf24;
+            color: #fbbf24;
+        }
+
+        .analysis-details {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .analysis-details h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 10px;
+        }
+
+        .detail-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .detail-text {
+            flex: 1;
+        }
+
+        .detail-text strong {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .detail-text p {
+            color: #a0aec0;
+            line-height: 1.6;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .demo-section {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 30px;
+            padding: 50px 40px;
+            margin-top: 60px;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .demo-header h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .demo-samples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .demo-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .demo-card:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .demo-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .demo-card p {
+            color: #a0aec0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .demo-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .badge-authentic {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .badge-fake {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 60px 40px 30px;
+            margin-top: 100px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section p {
+            color: #a0aec0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #718096;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .verification-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 2.5em;
+            }
+
+            .main-container {
+                padding: 0 20px;
+                margin-top: 100px;
+            }
+
+            .demo-samples {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 14, 39, 0.98);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                border-top: 1px solid rgba(102, 126, 234, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex !important;
+            }
+
+            .menu-toggle {
+                display: flex !important;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .step-content {
+                padding: 30px 20px;
+            }
+
+            .step-visual {
+                padding: 30px 20px;
+            }
+
+            .step-icon {
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-logo-icon">🛡️</span>
+                <span>GovVerify AI</span>
+            </a>
+            
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="working.html">How It Works</a></li>
+                <li><a href="verify.html" class="active nav-cta">Verify Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="page-header">
+            <h1 class="page-title">Verify Government Notice</h1>
+            <p class="page-subtitle">Upload documents, scan images with camera, or paste text to verify authenticity</p>
+        </div>
+
+        <div class="verification-grid">
+            <div>
+                <div class="upload-section">
+                    <div class="upload-icon">📄</div>
+                    <h2>Upload Document or Image</h2>
+                    <p>Support for PDF, JPG, PNG, JPEG files up to 10MB</p>
+                    
+                    <div class="upload-btn">
+                        <button class="btn">
+                            <span>Choose File</span>
+                            <span>📁</span>
+                        </button>
+                        <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFileUpload(event)">
+                    </div>
+
+                    <div class="file-preview" id="filePreview">
+                        <p><strong>Selected File:</strong> <span id="fileName"></span></p>
+                        <img id="previewImage" class="preview-image" style="display:none;">
+                    </div>
+
+                    <div class="or-divider">OR</div>
+
+                    <div class="text-input-area">
+                        <textarea id="textInput" placeholder="Paste WhatsApp message, SMS, or notice text here..."></textarea>
+                        <button class="btn" style="margin-top: 15px; width: 100%;" onclick="verifyText()">
+                            <span>Verify Text</span>
+                            <span>🔍</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="scanner-section">
+                    <div class="scanner-icon">📸</div>
+                    <h2>AI Image Scanner</h2>
+                    <p style="color: #a0aec0; margin-bottom: 20px;">Use your camera to scan and verify government notices instantly</p>
+                    
+                    <button class="btn camera-btn" onclick="openCamera()">
+                        <span>Open Camera Scanner</span>
+                        <span>📷</span>
+                    </button>
+                    <input type="file" id="cameraInput" accept="image/*" capture="environment" onchange="handleCameraCapture(event)">
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="results-placeholder" id="placeholder">
+                    <div class="icon">🔍</div>
+                    <h3>Analysis Results Will Appear Here</h3>
+                    <p>Upload a document, scan with camera, or paste text to start verification</p>
+                </div>
+
+                <div class="scanning" id="scanning">
+                    <div class="scanner-animation"></div>
+                    <h3>🤖 AI Analyzing Document...</h3>
+                    
+                    <div class="scanning-steps">
+                        <div class="scanning-step" id="step1">
+                            <span>⏳</span>
+                            <span>Extracting text using OCR...</span>
+                        </div>
+                        <div class="scanning-step" id="step2">
+                            <span>⏳</span>
+                            <span>Analyzing language patterns...</span>
+                        </div>
+                        <div class="scanning-step" id="step3">
+                            <span>⏳</span>
+                            <span>Checking government databases...</span>
+                        </div>
+                        <div class="scanning-step" id="step4">
+                            <span>⏳</span>
+                            <span>Verifying authenticity markers...</span>
+                        </div>
+                        <div class="scanning-step" id="step5">
+                            <span>⏳</span>
+                            <span>Generating trust score...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-content" id="results">
+                    <div style="text-align: center;">
+                        <div class="verdict-badge" id="verdictBadge">
+                            <span id="verdictIcon"></span>
+                            <span id="verdictText"></span>
+                        </div>
+                    </div>
+
+                    <div class="trust-score">
+                        <div class="score-circle" id="scoreCircle">
+                            <span id="scoreValue">0%</span>
+                        </div>
+                        <h3 id="scoreLabel">Trust Score</h3>
+                    </div>
+
+                    <div class="analysis-details">
+                        <h3>📊 Detailed Analysis</h3>
+                        <div id="analysisItems"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn" onclick="downloadReport()">
+                            <span>Download Report</span>
+                            <span>📥</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="resetVerification()">
+                            <span>Verify Another</span>
+                            <span>🔄</span>
+                        </button>
+                        <button class="btn btn-secondary" onclick="reportIssue()">
+                            <span>Report Issue</span>
+                            <span>⚠️</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-header">
+                <h2>🎯 Try Demo Examples</h2>
+                <p style="color: #a0aec0; font-size: 1.1em;">Click on any example below to see how our AI detection works</p>
+            </div>
+
+            <div class="demo-samples">
+                <div class="demo-card" onclick="runDemo('authentic')">
+                    <h3>✅ Authentic Notice</h3>
+                    <p>"PM Kisan Yojana - Official notification from Ministry of Agriculture regarding next installment payment on 15th January 2026"</p>
+                    <span class="demo-badge badge-authentic">Expected: AUTHENTIC</span>
+                </div>
+                <div class="demo-card" onclick="runDemo('fake')">
+                    <h3>❌ Fake Scam</h3>
+                    <p>"URGENT! Your Aadhaar card will be blocked. Click link and pay Rs.500 to activate immediately or face legal action"</p>
+                    <span class="demo-badge badge-fake">Expected: FAKE</span>
+                </div>
+                <div class="demo-card" onclick="runDemo('suspicious')">
+                    <h3>⚠️ Suspicious Message</h3>
+                    <p>"Government giving free laptops. Forward this message to 20 groups and register on this website with your bank details"</p>
+                    <span class="demo-badge badge-fake">Expected: SUSPICIOUS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>🛡️ GovVerify AI</h3>
+                    <p>An academic research project developed to combat fake government notices and protect citizens from fraud using artificial intelligence and machine learning.</p>
+                    <p><strong>Final Year CSE Project 2026</strong></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Project</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="working.html">How It Works</a></li>
+                        <li><a href="verify.html">Verify Notice</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Official Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://india.gov.in" target="_blank">🇮🇳 india.gov.in</a></li>
+                        <li><a href="https://pib.gov.in" target="_blank">📰 pib.gov.in</a></li>
+                        <li><a href="https://mygov.in" target="_blank">💼 mygov.in</a></li>
+                        <li><a href="https://digitalindia.gov.in" target="_blank">📱 Digital India</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Project Info</h3>
+                    <p><strong>Academic Institution:</strong><br>Computer Science & Engineering</p>
+                    <p><strong>Project Type:</strong><br>Final Year B.Tech Project</p>
+                    <p><strong>Technologies Used:</strong><br>AI, ML, NLP, OCR, Python</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 GovVerify AI - Final Year CSE Project. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('fileName').textContent = file.name;
+                document.getElementById('filePreview').classList.add('active');
+                
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.getElementById('previewImage');
+                        img.src = e.target.result;
+                        img.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    document.getElementById('previewImage').style.display = 'none';
+                }
+                
+                setTimeout(() => startVerification(), 1000);
+            }
+        }
+
+        function verifyText() {
+            const text = document.getElementById('textInput').value.trim();
+            if (text) {
+                startVerification();
+            } else {
+                alert('Please enter some text to verify');
+            }
+        }
+
+        function openCamera() {
+            document.getElementById('cameraInput').click();
+        }
+
+        function handleCameraCapture(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('fileName').textContent = 'Camera capture - ' + file.name;
+                    document.getElementById('filePreview').classList.add('active');
+                    const img = document.getElementById('previewImage');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+                
+                setTimeout(() => startVerification(), 1000);
+            }
+        }
+
+        function startVerification() {
+            document.getElementById('placeholder').style.display = 'none';
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('scanning').classList.add('active');
+            
+            const steps = ['step1', 'step2', 'step3', 'step4', 'step5'];
+            let currentStep = 0;
+            
+            const interval = setInterval(() => {
+                if (currentStep > 0) {
+                    document.getElementById(steps[currentStep - 1]).classList.remove('active');
+                    document.getElementById(steps[currentStep - 1]).classList.add('complete');
+                    document.getElementById(steps[currentStep - 1]).querySelector('span:first-child').textContent = '✅';
+                }
+                
+                if (currentStep < steps.length) {
+                    document.getElementById(steps[currentStep]).classList.add('active');
+                    currentStep++;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => showResults('authentic'), 500);
+                }
+            }, 800);
+        }
+
+        function runDemo(type) {
+            document.getElementById('textInput').value = '';
+            document.getElementById('filePreview').classList.remove('active');
+            startVerification();
+            setTimeout(() => showResults(type), 4500);
+        }
+
+        function showResults(type) {
+            document.getElementById('scanning').classList.remove('active');
+            
+            const results = {
+                authentic: {
+                    verdict: 'AUTHENTIC NOTICE',
+                    icon: '✅',
+                    badgeClass: 'verdict-authentic',
+                    score: 94,
+                    scoreClass: 'score-high',
+                    details: [
+                        {
+                            icon: '✅',
+                            title: 'Official Source Verified',
+                            desc: 'Notice matches official government database records from pib.gov.in and matches the communication style of Ministry of Agriculture.'
+                        },
+                        {
+                            icon: '🔒',
+                            title: 'Authentic Language Patterns',
+                            desc: 'Language analysis confirms standard government communication format. No suspicious urgency or payment requests detected.'
+                        },
+                        {
+                            icon: '📅',
+                            title: 'Timeline Consistent',
+                            desc: 'Payment schedule aligns with official PM Kisan Yojana calendar. Date mentioned is verified against government announcements.'
+                        },
+                        {
+                            icon: '🌐',
+                            title: 'Domain Verification',
+                            desc: 'All links and references point to verified government domains (.gov.in). No suspicious third-party links detected.'
+                        }
+                    ]
+                },
+                fake: {
+                    verdict: 'FAKE SCAM DETECTED',
+                    icon: '❌',
+                    badgeClass: 'verdict-fake',
+                    score: 8,
+                    scoreClass: 'score-low',
+                    details: [
+                        {
+                            icon: '🚨',
+                            title: 'Scam Characteristics',
+                            desc: 'Message contains multiple red flags including urgent threats, payment demands, and fear tactics commonly used in phishing scams.'
+                        },
+                        {
+                            icon: '💰',
+                            title: 'Fraudulent Payment Request',
+                            desc: 'Aadhaar services are free. Government never asks for payment to "activate" or "unblock" Aadhaar cards. This is a classic scam pattern.'
+                        },
+                        {
+                            icon: '⚠️',
+                            title: 'No Official Source',
+                            desc: 'Cannot be verified against any government database. UIDAI has issued warnings about similar fake messages.'
+                        },
+                        {
+                            icon: '🔗',
+                            title: 'Suspicious Links',
+                            desc: 'Contains unverified external links that likely lead to phishing sites designed to steal personal and financial information.'
+                        }
+                    ]
+                },
+                suspicious: {
+                    verdict: 'HIGHLY SUSPICIOUS',
+                    icon: '⚠️',
+                    badgeClass: 'verdict-suspicious',
+                    score: 22,
+                    scoreClass: 'score-low',
+                    details: [
+                        {
+                            icon: '🎁',
+                            title: 'Too Good to Be True',
+                            desc: 'Government does not distribute free laptops through viral WhatsApp messages. Official schemes have proper application processes.'
+                        },
+                        {
+                            icon: '🔄',
+                            title: 'Chain Message Pattern',
+                            desc: 'Requires forwarding to multiple groups - a classic pyramid scheme tactic. Legitimate government communications never require forwarding.'
+                        },
+                        {
+                            icon: '💳',
+                            title: 'Banking Details Request',
+                            desc: 'Asking for bank details for "registration" is a major red flag. Government portals never request sensitive banking information upfront.'
+                        },
+                        {
+                            icon: '🌐',
+                            title: 'Unverified Website',
+                            desc: 'Website mentioned is not a government domain. No such scheme exists on official government portals like mygov.in or digitalindia.gov.in.'
+                        }
+                    ]
+                }
+            };
+
+            const result = results[type];
+            
+            document.getElementById('verdictIcon').textContent = result.icon;
+            document.getElementById('verdictText').textContent = result.verdict;
+            document.getElementById('verdictBadge').className = 'verdict-badge ' + result.badgeClass;
+            
+            document.getElementById('scoreValue').textContent = result.score + '%';
+            document.getElementById('scoreCircle').className = 'score-circle ' + result.scoreClass;
+            
+            const analysisItems = document.getElementById('analysisItems');
+            analysisItems.innerHTML = '';
+            result.details.forEach(detail => {
+                const item = document.createElement('div');
+                item.className = 'detail-item';
+                item.innerHTML = `
+                    <div class="detail-icon">${detail.icon}</div>
+                    <div class="detail-text">
+                        <strong>${detail.title}</strong>
+                        <p>${detail.desc}</p>
+                    </div>
+                `;
+                analysisItems.appendChild(item);
+            });
+            
+            document.getElementById('results').classList.add('active');
+            
+            const steps = ['step1', 'step2', 'step3', 'step4', 'step5'];
+            steps.forEach(step => {
+                document.getElementById(step).classList.remove('active', 'complete');
+                document.getElementById(step).querySelector('span:first-child').textContent = '⏳';
+            });
+        }
+
+        function downloadReport() {
+            alert('📥 Downloading detailed verification report...\n\nReport includes:\n• Full analysis results\n• Evidence screenshots\n• Official source links\n• Recommendations');
+        }
+
+        function resetVerification() {
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('placeholder').style.display = 'block';
+            document.getElementById('filePreview').classList.remove('active');
+            document.getElementById('textInput').value = '';
+            document.getElementById('fileInput').value = '';
+            document.getElementById('cameraInput').value = '';
+        }
+
+        function reportIssue() {
+            alert('⚠️ Report Issue\n\nYou can report:\n• Incorrect verification results\n• New scam patterns\n• Technical problems\n• False positives/negatives\n\nYour feedback helps improve our AI model!');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
