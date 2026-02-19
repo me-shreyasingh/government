@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Demo Dashboard - GovVerify AI</title>
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -40,15 +42,22 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
             animation: pulse 8s ease-in-out infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
         }
 
         @keyframes fadeInUp {
@@ -56,6 +65,7 @@
                 opacity: 0;
                 transform: translateY(40px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -79,6 +89,7 @@
                 opacity: 0;
                 transform: translateY(-100%);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -110,8 +121,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         /* Navigation Bar */
@@ -312,22 +330,33 @@
         }
 
         .stat-card {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 30px;
             transition: all 0.3s ease;
             animation: fadeInUp 0.6s ease-out backwards;
         }
 
-        .stat-card:nth-child(1) { animation-delay: 0.1s; }
-        .stat-card:nth-child(2) { animation-delay: 0.2s; }
-        .stat-card:nth-child(3) { animation-delay: 0.3s; }
-        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+        .stat-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stat-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stat-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stat-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         .stat-card:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             border-color: rgba(102, 126, 234, 0.5);
             transform: translateY(-5px);
         }
@@ -366,9 +395,9 @@
 
         /* Demo Section */
         .demo-section {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             padding: 40px;
             margin-bottom: 40px;
@@ -414,8 +443,8 @@
         }
 
         .demo-btn.secondary {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .quick-tips {
@@ -454,7 +483,7 @@
         }
 
         .demo-input-section {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border: 2px dashed rgba(102, 126, 234, 0.3);
             border-radius: 20px;
             padding: 30px;
@@ -488,16 +517,26 @@
         }
 
         @keyframes wiggle {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-10deg); }
-            75% { transform: rotate(10deg); }
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-10deg);
+            }
+
+            75% {
+                transform: rotate(10deg);
+            }
         }
 
         .demo-textarea {
             width: 100%;
             min-height: 250px;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             padding: 20px;
             color: white;
@@ -547,7 +586,7 @@
         }
 
         .demo-output-section {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(102, 126, 234, 0.3);
             border-radius: 20px;
             padding: 30px;
@@ -625,7 +664,7 @@
         }
 
         .finding-item {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.3);
             border-left: 4px solid #ef4444;
             padding: 15px;
             border-radius: 10px;
@@ -648,9 +687,9 @@
 
         /* Process Visualization */
         .process-viz {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             padding: 40px;
             margin-bottom: 40px;
@@ -706,6 +745,7 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
             }
+
             100% {
                 box-shadow: 0 0 0 20px rgba(102, 126, 234, 0);
             }
@@ -723,9 +763,9 @@
 
         /* Process Visualization */
         .process-viz {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 25px;
             padding: 40px;
             margin-bottom: 40px;
@@ -781,6 +821,7 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
             }
+
             100% {
                 box-shadow: 0 0 0 20px rgba(102, 126, 234, 0);
             }
@@ -804,8 +845,8 @@
         }
 
         .sample-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 25px;
             cursor: pointer;
@@ -833,7 +874,7 @@
         }
 
         .sample-card:hover {
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
             border-color: rgba(102, 126, 234, 0.5);
             transform: translateY(-5px);
         }
@@ -1130,6 +1171,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="bg-animation"></div>
 
@@ -1140,7 +1182,7 @@
                 <span class="admin-logo-icon">🛡️</span>
                 <span>GovVerify AI</span>
             </a>
-            
+
             <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
@@ -1234,7 +1276,8 @@
 
             <div class="quick-tips">
                 <div class="tip-badge">💡 Quick Tip</div>
-                <p>Try loading different samples below to see how AI detects fake vs authentic notices. Each sample shows different fraud patterns!</p>
+                <p>Try loading different samples below to see how AI detects fake vs authentic notices. Each sample
+                    shows different fraud patterns!</p>
             </div>
 
             <div class="demo-area">
@@ -1267,7 +1310,8 @@ Or click 'Load Sample' buttons to try pre-loaded examples!"></textarea>
                                 <div class="score-badge" id="scoreBadge">18</div>
                                 <div>
                                     <div style="font-size: 1.2em; font-weight: 600;">Trust Score</div>
-                                    <div style="color: #a0aec0; font-size: 0.9em;">0-100 Scale (Lower = Suspicious)</div>
+                                    <div style="color: #a0aec0; font-size: 0.9em;">0-100 Scale (Lower = Suspicious)
+                                    </div>
                                 </div>
                             </div>
 
@@ -1278,7 +1322,8 @@ Or click 'Load Sample' buttons to try pre-loaded examples!"></textarea>
                                 </li>
                                 <li class="finding-item">
                                     <div class="finding-title">❌ Suspicious Language</div>
-                                    <div class="finding-desc">Contains urgency tactics and requests for personal info</div>
+                                    <div class="finding-desc">Contains urgency tactics and requests for personal info
+                                    </div>
                                 </li>
                                 <li class="finding-item">
                                     <div class="finding-title">❌ Invalid Contact Info</div>
@@ -1329,7 +1374,8 @@ Or click 'Load Sample' buttons to try pre-loaded examples!"></textarea>
                 <div class="sample-card" onclick="loadSample('fake')">
                     <span class="sample-type">❌ FAKE</span>
                     <div class="sample-title">Fake Laptop Yojana</div>
-                    <div class="sample-preview">"Congratulations! You have been selected for FREE LAPTOP under PM Digital India Scheme. Click link to claim..."</div>
+                    <div class="sample-preview">"Congratulations! You have been selected for FREE LAPTOP under PM
+                        Digital India Scheme. Click link to claim..."</div>
                     <div class="sample-stats">
                         <span>📉 Trust Score: 18/100</span>
                         <span>⚠️ High Risk</span>
@@ -1339,7 +1385,8 @@ Or click 'Load Sample' buttons to try pre-loaded examples!"></textarea>
                 <div class="sample-card" onclick="loadSample('authentic')">
                     <span class="sample-type authentic">✓ AUTHENTIC</span>
                     <div class="sample-title">Authentic PIB Release</div>
-                    <div class="sample-preview">"Press Information Bureau - Government of India announces new guidelines for Digital India program effective from..."</div>
+                    <div class="sample-preview">"Press Information Bureau - Government of India announces new guidelines
+                        for Digital India program effective from..."</div>
                     <div class="sample-stats">
                         <span>📈 Trust Score: 94/100</span>
                         <span>✅ Verified</span>
@@ -1349,7 +1396,8 @@ Or click 'Load Sample' buttons to try pre-loaded examples!"></textarea>
                 <div class="sample-card" onclick="loadSample('pension')">
                     <span class="sample-type">❌ FAKE</span>
                     <div class="sample-title">Fake Pension Scheme</div>
-                    <div class="sample-preview">"Urgent! Your pension amount of ₹50,000 is pending. Submit Aadhaar and bank details immediately to receive..."</div>
+                    <div class="sample-preview">"Urgent! Your pension amount of ₹50,000 is pending. Submit Aadhaar and
+                        bank details immediately to receive..."</div>
                     <div class="sample-stats">
                         <span>📉 Trust Score: 12/100</span>
                         <span>⚠️ Scam Alert</span>
@@ -1359,7 +1407,8 @@ Or click 'Load Sample' buttons to try pre-loaded examples!"></textarea>
                 <div class="sample-card" onclick="loadSample('subsidy')">
                     <span class="sample-type">❌ FAKE</span>
                     <div class="sample-title">Fake Subsidy Notice</div>
-                    <div class="sample-preview">"PM Kisan Samman Nidhi - You are eligible for ₹25,000 subsidy. Pay ₹500 processing fee to claim your amount..."</div>
+                    <div class="sample-preview">"PM Kisan Samman Nidhi - You are eligible for ₹25,000 subsidy. Pay ₹500
+                        processing fee to claim your amount..."</div>
                     <div class="sample-stats">
                         <span>📉 Trust Score: 9/100</span>
                         <span>⚠️ Payment Scam</span>
@@ -1449,7 +1498,8 @@ Or click 'Load Sample' buttons to try pre-loaded examples!"></textarea>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>🛡️ GovVerify AI</h3>
-                    <p>An academic research project developed to combat fake government notices and protect citizens from fraud using artificial intelligence and machine learning.</p>
+                    <p>An academic research project developed to combat fake government notices and protect citizens
+                        from fraud using artificial intelligence and machine learning.</p>
                     <p><strong>Final Year CSE Project 2026</strong></p>
                     <div class="social-links">
                         <a href="#" class="social-link" title="Twitter">𝕏</a>
@@ -1489,7 +1539,9 @@ Or click 'Load Sample' buttons to try pre-loaded examples!"></textarea>
             </div>
 
             <div class="footer-bottom">
-                <p><strong>⚠️ Disclaimer:</strong> This is a prototype system developed for academic and research purposes. Not an official government platform. Always verify critical information through official government channels.</p>
+                <p><strong>⚠️ Disclaimer:</strong> This is a prototype system developed for academic and research
+                    purposes. Not an official government platform. Always verify critical information through official
+                    government channels.</p>
                 <p>&copy; 2026 GovVerify AI - Final Year CSE Project. All Rights Reserved.</p>
                 <p>Developed with ❤️ for Digital India Initiative</p>
             </div>
@@ -1674,17 +1726,17 @@ Act fast! Only 50 slots remaining.`,
             document.getElementById('demoInput').value = '';
             document.getElementById('emptyState').style.display = 'flex';
             document.getElementById('resultDisplay').classList.remove('active');
-            
+
             // Reset process steps
             for (let i = 1; i <= 5; i++) {
                 document.getElementById(`step${i}`).classList.remove('active');
             }
         }
 
-        // Analyze demo with animation
+        // Analyze demo with animation - Now using Backend API
         async function analyzeDemo() {
             const input = document.getElementById('demoInput').value.trim();
-            
+
             if (!input) {
                 alert('Please enter some text or load a sample document first!');
                 return;
@@ -1693,7 +1745,7 @@ Act fast! Only 50 slots remaining.`,
             // Disable button during processing
             const btn = document.querySelector('.analyze-button');
             btn.disabled = true;
-            btn.textContent = '🔄 Analyzing...';
+            btn.innerHTML = '<span>🔄 Analyzing...</span><span class="button-subtext">Processing with AI</span>';
 
             // Animate process steps
             for (let i = 1; i <= 5; i++) {
@@ -1701,16 +1753,64 @@ Act fast! Only 50 slots remaining.`,
                 document.getElementById(`step${i}`).classList.add('active');
             }
 
-            // Determine which sample this is closest to
+            try {
+                // Call Backend API
+                const response = await fetch('http://localhost:5000/api/verify/text', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text: input })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+
+                    // Convert API response to display format
+                    const displayResult = {
+                        score: result.trust_score,
+                        authentic: result.verdict === 'AUTHENTIC',
+                        findings: result.findings.map(f => ({
+                            title: f.icon + ' ' + f.title,
+                            desc: f.desc,
+                            positive: f.icon === '✅' || f.icon === '🔒' || f.icon === '📋'
+                        }))
+                    };
+
+                    displayResults(displayResult);
+                } else {
+                    // Fallback to local matching if API fails
+                    fallbackAnalysis(input);
+                }
+            } catch (error) {
+                console.error('API Error:', error);
+                // Fallback to local matching
+                fallbackAnalysis(input);
+            }
+
+            // Re-enable button
+            btn.disabled = false;
+            btn.innerHTML = '<span>🔍 Analyze Document</span><span class="button-subtext">AI will process in ~3 seconds</span>';
+
+            // Reset process steps after delay
+            setTimeout(() => {
+                for (let i = 1; i <= 5; i++) {
+                    document.getElementById(`step${i}`).classList.remove('active');
+                }
+            }, 3000);
+        }
+
+        // Fallback analysis when backend is unavailable
+        function fallbackAnalysis(input) {
             let matchedSample = null;
             let maxMatch = 0;
-            
+
             for (const [key, sample] of Object.entries(samples)) {
                 const sampleWords = sample.text.toLowerCase().split(/\s+/);
                 const inputWords = input.toLowerCase().split(/\s+/);
                 const commonWords = sampleWords.filter(word => inputWords.includes(word)).length;
                 const similarity = commonWords / Math.max(sampleWords.length, inputWords.length);
-                
+
                 if (similarity > maxMatch) {
                     maxMatch = similarity;
                     matchedSample = sample;
@@ -1722,18 +1822,18 @@ Act fast! Only 50 slots remaining.`,
                 const lowerInput = input.toLowerCase();
                 const suspiciousKeywords = ['urgent', 'click', 'claim', 'free', 'limited', 'act now', 'expires', 'congratulations', 'selected', 'winner', 'processing fee', 'pay', 'send', 'aadhaar', 'bank details', 'otp', 'whatsapp', 'gmail', 'paytm'];
                 const authenticKeywords = ['government of india', 'press information bureau', 'pib', 'ministry', '.gov.in', 'official', 'circular', 'notification'];
-                
+
                 let suspiciousCount = 0;
                 let authenticCount = 0;
-                
+
                 suspiciousKeywords.forEach(keyword => {
                     if (lowerInput.includes(keyword)) suspiciousCount++;
                 });
-                
+
                 authenticKeywords.forEach(keyword => {
                     if (lowerInput.includes(keyword)) authenticCount++;
                 });
-                
+
                 if (authenticCount > suspiciousCount) {
                     matchedSample = {
                         score: 85,
@@ -1757,20 +1857,7 @@ Act fast! Only 50 slots remaining.`,
                 }
             }
 
-            // Display results
-            await new Promise(resolve => setTimeout(resolve, 500));
             displayResults(matchedSample);
-
-            // Re-enable button
-            btn.disabled = false;
-            btn.textContent = '🔍 Analyze Document';
-
-            // Reset process steps after delay
-            setTimeout(() => {
-                for (let i = 1; i <= 5; i++) {
-                    document.getElementById(`step${i}`).classList.remove('active');
-                }
-            }, 3000);
         }
 
         // Display results
@@ -1824,21 +1911,21 @@ Act fast! Only 50 slots remaining.`,
 
         // Smooth scroll for navigation links (for internal sections)
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 // Only prevent default for hash links
                 if (this.getAttribute('href').startsWith('#')) {
                     e.preventDefault();
-                    
+
                     // Remove active class from all links
                     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                    
+
                     // Add active class to clicked link
                     this.classList.add('active');
-                    
+
                     // Close mobile menu if open
                     const navMenu = document.getElementById('navMenu');
                     navMenu.classList.remove('active');
-                    
+
                     // Scroll to section
                     const targetId = this.getAttribute('href').substring(1);
                     const targetElement = document.getElementById(targetId);
@@ -1852,12 +1939,12 @@ Act fast! Only 50 slots remaining.`,
         });
 
         // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             const navMenu = document.getElementById('navMenu');
             const menuBtn = document.querySelector('.mobile-menu-btn');
             const isClickInsideMenu = navMenu.contains(event.target);
             const isClickOnButton = menuBtn.contains(event.target);
-            
+
             if (!isClickInsideMenu && !isClickOnButton && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
             }
@@ -1867,4 +1954,5 @@ Act fast! Only 50 slots remaining.`,
         // function startTutorial() { ... }
     </script>
 </body>
+
 </html>

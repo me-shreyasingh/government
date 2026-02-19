@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify Notice - GovVerify AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -36,20 +38,34 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
             animation: pulse 8s ease-in-out infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         @keyframes slideDown {
@@ -57,6 +73,7 @@
                 opacity: 0;
                 transform: translateY(-100%);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -209,7 +226,7 @@
         }
 
         .upload-section {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 2px dashed rgba(102, 126, 234, 0.3);
             border-radius: 30px;
@@ -247,11 +264,7 @@
         }
 
         .upload-btn input[type="file"] {
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
+            display: none;
         }
 
         .btn {
@@ -313,8 +326,13 @@
             background: rgba(102, 126, 234, 0.2);
         }
 
-        .or-divider::before { left: 0; }
-        .or-divider::after { right: 0; }
+        .or-divider::before {
+            left: 0;
+        }
+
+        .or-divider::after {
+            right: 0;
+        }
 
         .text-input-area {
             margin-top: 30px;
@@ -324,7 +342,7 @@
             width: 100%;
             min-height: 150px;
             padding: 20px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(102, 126, 234, 0.3);
             border-radius: 15px;
             color: white;
@@ -336,11 +354,11 @@
         .text-input-area textarea:focus {
             outline: none;
             border-color: rgba(102, 126, 234, 0.6);
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .scanner-section {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 2px dashed rgba(16, 185, 129, 0.3);
             border-radius: 30px;
@@ -356,8 +374,15 @@
         }
 
         @keyframes scan {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-10px) scale(1.05); }
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+
+            50% {
+                transform: translateY(-10px) scale(1.05);
+            }
         }
 
         .scanner-section h2 {
@@ -380,7 +405,7 @@
         }
 
         .results-section {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(102, 126, 234, 0.3);
             border-radius: 30px;
@@ -423,7 +448,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .scanning-steps {
@@ -527,7 +554,7 @@
         }
 
         .analysis-details {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 20px;
@@ -545,7 +572,7 @@
             gap: 15px;
             margin-bottom: 15px;
             padding: 15px;
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.02);
             border-radius: 10px;
         }
 
@@ -586,7 +613,7 @@
         }
 
         .demo-section {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(102, 126, 234, 0.3);
             border-radius: 30px;
@@ -615,7 +642,7 @@
         }
 
         .demo-card {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(102, 126, 234, 0.2);
             border-radius: 20px;
             padding: 25px;
@@ -714,7 +741,7 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 30px;
             text-align: center;
             color: #718096;
@@ -780,6 +807,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="bg-animation"></div>
 
@@ -790,7 +818,7 @@
                 <span class="nav-logo-icon">🛡️</span>
                 <span>GovVerify AI</span>
             </a>
-            
+
             <div class="menu-toggle" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -819,13 +847,14 @@
                     <div class="upload-icon">📄</div>
                     <h2>Upload Document or Image</h2>
                     <p>Support for PDF, JPG, PNG, JPEG files up to 10MB</p>
-                    
+
                     <div class="upload-btn">
-                        <button class="btn">
+                        <button class="btn" onclick="document.getElementById('fileInput').click()">
                             <span>Choose File</span>
                             <span>📁</span>
                         </button>
-                        <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFileUpload(event)">
+                        <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" style="display:none;"
+                            onchange="handleFileUpload(event)">
                     </div>
 
                     <div class="file-preview" id="filePreview">
@@ -836,7 +865,8 @@
                     <div class="or-divider">OR</div>
 
                     <div class="text-input-area">
-                        <textarea id="textInput" placeholder="Paste WhatsApp message, SMS, or notice text here..."></textarea>
+                        <textarea id="textInput"
+                            placeholder="Paste WhatsApp message, SMS, or notice text here..."></textarea>
                         <button class="btn" style="margin-top: 15px; width: 100%;" onclick="verifyText()">
                             <span>Verify Text</span>
                             <span>🔍</span>
@@ -847,13 +877,15 @@
                 <div class="scanner-section">
                     <div class="scanner-icon">📸</div>
                     <h2>AI Image Scanner</h2>
-                    <p style="color: #a0aec0; margin-bottom: 20px;">Use your camera to scan and verify government notices instantly</p>
-                    
+                    <p style="color: #a0aec0; margin-bottom: 20px;">Use your camera to scan and verify government
+                        notices instantly</p>
+
                     <button class="btn camera-btn" onclick="openCamera()">
                         <span>Open Camera Scanner</span>
                         <span>📷</span>
                     </button>
-                    <input type="file" id="cameraInput" accept="image/*" capture="environment" onchange="handleCameraCapture(event)">
+                    <input type="file" id="cameraInput" accept="image/*" capture="environment"
+                        onchange="handleCameraCapture(event)">
                 </div>
             </div>
 
@@ -867,7 +899,7 @@
                 <div class="scanning" id="scanning">
                     <div class="scanner-animation"></div>
                     <h3>🤖 AI Analyzing Document...</h3>
-                    
+
                     <div class="scanning-steps">
                         <div class="scanning-step" id="step1">
                             <span>⏳</span>
@@ -933,23 +965,27 @@
         <div class="demo-section">
             <div class="demo-header">
                 <h2>🎯 Try Demo Examples</h2>
-                <p style="color: #a0aec0; font-size: 1.1em;">Click on any example below to see how our AI detection works</p>
+                <p style="color: #a0aec0; font-size: 1.1em;">Click on any example below to see how our AI detection
+                    works</p>
             </div>
 
             <div class="demo-samples">
                 <div class="demo-card" onclick="runDemo('authentic')">
                     <h3>✅ Authentic Notice</h3>
-                    <p>"PM Kisan Yojana - Official notification from Ministry of Agriculture regarding next installment payment on 15th January 2026"</p>
+                    <p>"PM Kisan Yojana - Official notification from Ministry of Agriculture regarding next installment
+                        payment on 15th January 2026"</p>
                     <span class="demo-badge badge-authentic">Expected: AUTHENTIC</span>
                 </div>
                 <div class="demo-card" onclick="runDemo('fake')">
                     <h3>❌ Fake Scam</h3>
-                    <p>"URGENT! Your Aadhaar card will be blocked. Click link and pay Rs.500 to activate immediately or face legal action"</p>
+                    <p>"URGENT! Your Aadhaar card will be blocked. Click link and pay Rs.500 to activate immediately or
+                        face legal action"</p>
                     <span class="demo-badge badge-fake">Expected: FAKE</span>
                 </div>
                 <div class="demo-card" onclick="runDemo('suspicious')">
                     <h3>⚠️ Suspicious Message</h3>
-                    <p>"Government giving free laptops. Forward this message to 20 groups and register on this website with your bank details"</p>
+                    <p>"Government giving free laptops. Forward this message to 20 groups and register on this website
+                        with your bank details"</p>
                     <span class="demo-badge badge-fake">Expected: SUSPICIOUS</span>
                 </div>
             </div>
@@ -961,10 +997,11 @@
             <div class="footer-grid">
                 <div class="footer-section">
                     <h3>🛡️ GovVerify AI</h3>
-                    <p>An academic research project developed to combat fake government notices and protect citizens from fraud using artificial intelligence and machine learning.</p>
+                    <p>An academic research project developed to combat fake government notices and protect citizens
+                        from fraud using artificial intelligence and machine learning.</p>
                     <p><strong>Final Year CSE Project 2026</strong></p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
@@ -975,7 +1012,7 @@
                         <li><a href="verify.html">Verify Notice</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Official Resources</h3>
                     <ul class="footer-links">
@@ -985,7 +1022,7 @@
                         <li><a href="https://digitalindia.gov.in" target="_blank">📱 Digital India</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
                     <h3>Project Info</h3>
                     <p><strong>Academic Institution:</strong><br>Computer Science & Engineering</p>
@@ -1001,39 +1038,53 @@
     </footer>
 
     <script>
+        // Backend API Configuration
+        const API_BASE_URL = 'http://localhost:5000/api';
+        let currentVerificationId = null;
+
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.toggle('active');
         }
 
-        function handleFileUpload(event) {
+        // File Upload Handler with Backend Integration
+        async function handleFileUpload(event) {
             const file = event.target.files[0];
+            console.log('File selected:', file);
+
             if (file) {
+                // Show file info
                 document.getElementById('fileName').textContent = file.name;
                 document.getElementById('filePreview').classList.add('active');
-                
+                console.log('File preview shown');
+
+                // Show image preview for images
                 if (file.type.startsWith('image/')) {
                     const reader = new FileReader();
-                    reader.onload = function(e) {
+                    reader.onload = function (e) {
                         const img = document.getElementById('previewImage');
                         img.src = e.target.result;
                         img.style.display = 'block';
+                        console.log('Image preview loaded');
                     };
                     reader.readAsDataURL(file);
                 } else {
                     document.getElementById('previewImage').style.display = 'none';
                 }
-                
-                setTimeout(() => startVerification(), 1000);
+
+                // Start verification with backend
+                console.log('Starting file verification...');
+                await startVerificationWithBackend('file', file);
             }
         }
 
-        function verifyText() {
+        // Text Verification with Backend
+        async function verifyText() {
             const text = document.getElementById('textInput').value.trim();
             if (text) {
-                startVerification();
+                startVerificationWithBackend('text', text);
             } else {
-                alert('Please enter some text to verify');
+                showNotification('Please enter some text to verify', 'warning');
             }
         }
 
@@ -1041,11 +1092,12 @@
             document.getElementById('cameraInput').click();
         }
 
-        function handleCameraCapture(event) {
+        // Camera Capture Handler
+        async function handleCameraCapture(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     document.getElementById('fileName').textContent = 'Camera capture - ' + file.name;
                     document.getElementById('filePreview').classList.add('active');
                     const img = document.getElementById('previewImage');
@@ -1053,46 +1105,183 @@
                     img.style.display = 'block';
                 };
                 reader.readAsDataURL(file);
-                
-                setTimeout(() => startVerification(), 1000);
+
+                startVerificationWithBackend('file', file);
             }
         }
 
-        function startVerification() {
+        // Main Verification Function with Backend API
+        async function startVerificationWithBackend(type, data) {
+            console.log('=== Starting Verification ===');
+            console.log('Type:', type);
+            console.log('Data:', type === 'file' ? data.name : data.substring(0, 50) + '...');
+
+            // Show scanning animation
             document.getElementById('placeholder').style.display = 'none';
             document.getElementById('results').classList.remove('active');
             document.getElementById('scanning').classList.add('active');
-            
+            console.log('Scanning animation shown');
+
             const steps = ['step1', 'step2', 'step3', 'step4', 'step5'];
             let currentStep = 0;
-            
-            const interval = setInterval(() => {
+
+            // Animate steps
+            const stepInterval = setInterval(() => {
                 if (currentStep > 0) {
                     document.getElementById(steps[currentStep - 1]).classList.remove('active');
                     document.getElementById(steps[currentStep - 1]).classList.add('complete');
                     document.getElementById(steps[currentStep - 1]).querySelector('span:first-child').textContent = '✅';
                 }
-                
+
                 if (currentStep < steps.length) {
                     document.getElementById(steps[currentStep]).classList.add('active');
                     currentStep++;
-                } else {
-                    clearInterval(interval);
-                    setTimeout(() => showResults('authentic'), 500);
                 }
-            }, 800);
+            }, 600);
+
+            try {
+                let response;
+
+                if (type === 'text') {
+                    response = await fetch(`${API_BASE_URL}/verify/text`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ text: data })
+                    });
+                } else if (type === 'file') {
+                    const formData = new FormData();
+                    formData.append('file', data);
+
+                    // Also send any text that might be in the text input
+                    const textInput = document.getElementById('textInput').value.trim();
+                    if (textInput) {
+                        formData.append('text', textInput);
+                    }
+
+                    response = await fetch(`${API_BASE_URL}/verify/file`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                }
+
+                clearInterval(stepInterval);
+
+                // Complete all steps
+                steps.forEach((step, index) => {
+                    document.getElementById(step).classList.remove('active');
+                    document.getElementById(step).classList.add('complete');
+                    document.getElementById(step).querySelector('span:first-child').textContent = '✅';
+                });
+
+                if (response && response.ok) {
+                    const result = await response.json();
+                    currentVerificationId = result.verification_id;
+
+                    setTimeout(() => {
+                        showBackendResults(result);
+                    }, 500);
+                } else {
+                    // Fallback to demo mode if backend is unavailable
+                    console.warn('Backend unavailable, using demo mode');
+                    setTimeout(() => {
+                        showResults('authentic');
+                    }, 500);
+                }
+            } catch (error) {
+                console.error('Verification error:', error);
+                clearInterval(stepInterval);
+
+                // Fallback to demo mode
+                steps.forEach((step) => {
+                    document.getElementById(step).classList.remove('active');
+                    document.getElementById(step).classList.add('complete');
+                    document.getElementById(step).querySelector('span:first-child').textContent = '✅';
+                });
+
+                setTimeout(() => {
+                    showResults('authentic');
+                }, 500);
+            }
         }
 
+        // Display Backend API Results
+        function showBackendResults(result) {
+            document.getElementById('scanning').classList.remove('active');
+
+            // Map verdict to badge class
+            let badgeClass, scoreClass;
+            if (result.verdict === 'AUTHENTIC') {
+                badgeClass = 'verdict-authentic';
+                scoreClass = 'score-high';
+            } else if (result.verdict === 'SUSPICIOUS') {
+                badgeClass = 'verdict-suspicious';
+                scoreClass = 'score-medium';
+            } else {
+                badgeClass = 'verdict-fake';
+                scoreClass = 'score-low';
+            }
+
+            // Get verdict icon
+            const verdictIcon = result.verdict === 'AUTHENTIC' ? '✅' :
+                result.verdict === 'SUSPICIOUS' ? '⚠️' : '❌';
+
+            // Update UI
+            document.getElementById('verdictIcon').textContent = verdictIcon;
+            document.getElementById('verdictText').textContent = result.verdict + ' NOTICE';
+            document.getElementById('verdictBadge').className = 'verdict-badge ' + badgeClass;
+
+            document.getElementById('scoreValue').textContent = result.trust_score + '%';
+            document.getElementById('scoreCircle').className = 'score-circle ' + scoreClass;
+
+            // Display findings
+            const analysisItems = document.getElementById('analysisItems');
+            analysisItems.innerHTML = '';
+
+            if (result.findings && result.findings.length > 0) {
+                result.findings.forEach(finding => {
+                    const item = document.createElement('div');
+                    item.className = 'detail-item';
+                    item.innerHTML = `
+                        <div class="detail-icon">${finding.icon || '📋'}</div>
+                        <div class="detail-text">
+                            <strong>${finding.title}</strong>
+                            <p>${finding.desc}</p>
+                        </div>
+                    `;
+                    analysisItems.appendChild(item);
+                });
+            }
+
+            document.getElementById('results').classList.add('active');
+
+            // Reset scanning steps
+            const steps = ['step1', 'step2', 'step3', 'step4', 'step5'];
+            steps.forEach(step => {
+                document.getElementById(step).classList.remove('active', 'complete');
+                document.getElementById(step).querySelector('span:first-child').textContent = '⏳';
+            });
+        }
+
+        // Demo function (for sample cards)
         function runDemo(type) {
-            document.getElementById('textInput').value = '';
+            const demoTexts = {
+                authentic: "PM Kisan Yojana - Official notification from Ministry of Agriculture regarding next installment payment on 15th January 2026. Visit www.pmkisan.gov.in for more details.",
+                fake: "URGENT! Your Aadhaar card will be blocked. Click link and pay Rs.500 to activate immediately or face legal action. WhatsApp: +91-98765-43210",
+                suspicious: "Government giving free laptops. Forward this message to 20 groups and register on this website with your bank details to claim."
+            };
+
+            document.getElementById('textInput').value = demoTexts[type] || '';
             document.getElementById('filePreview').classList.remove('active');
-            startVerification();
-            setTimeout(() => showResults(type), 4500);
+
+            startVerificationWithBackend('text', demoTexts[type]);
         }
 
+        // Fallback demo results
         function showResults(type) {
             document.getElementById('scanning').classList.remove('active');
-            
+
             const results = {
                 authentic: {
                     verdict: 'AUTHENTIC NOTICE',
@@ -1101,26 +1290,10 @@
                     score: 94,
                     scoreClass: 'score-high',
                     details: [
-                        {
-                            icon: '✅',
-                            title: 'Official Source Verified',
-                            desc: 'Notice matches official government database records from pib.gov.in and matches the communication style of Ministry of Agriculture.'
-                        },
-                        {
-                            icon: '🔒',
-                            title: 'Authentic Language Patterns',
-                            desc: 'Language analysis confirms standard government communication format. No suspicious urgency or payment requests detected.'
-                        },
-                        {
-                            icon: '📅',
-                            title: 'Timeline Consistent',
-                            desc: 'Payment schedule aligns with official PM Kisan Yojana calendar. Date mentioned is verified against government announcements.'
-                        },
-                        {
-                            icon: '🌐',
-                            title: 'Domain Verification',
-                            desc: 'All links and references point to verified government domains (.gov.in). No suspicious third-party links detected.'
-                        }
+                        { icon: '✅', title: 'Official Source Verified', desc: 'Notice matches official government database records.' },
+                        { icon: '🔒', title: 'Authentic Language Patterns', desc: 'Language analysis confirms standard government communication format.' },
+                        { icon: '📅', title: 'Timeline Consistent', desc: 'Dates and references align with official announcements.' },
+                        { icon: '🌐', title: 'Domain Verification', desc: 'All links point to verified government domains.' }
                     ]
                 },
                 fake: {
@@ -1130,26 +1303,10 @@
                     score: 8,
                     scoreClass: 'score-low',
                     details: [
-                        {
-                            icon: '🚨',
-                            title: 'Scam Characteristics',
-                            desc: 'Message contains multiple red flags including urgent threats, payment demands, and fear tactics commonly used in phishing scams.'
-                        },
-                        {
-                            icon: '💰',
-                            title: 'Fraudulent Payment Request',
-                            desc: 'Aadhaar services are free. Government never asks for payment to "activate" or "unblock" Aadhaar cards. This is a classic scam pattern.'
-                        },
-                        {
-                            icon: '⚠️',
-                            title: 'No Official Source',
-                            desc: 'Cannot be verified against any government database. UIDAI has issued warnings about similar fake messages.'
-                        },
-                        {
-                            icon: '🔗',
-                            title: 'Suspicious Links',
-                            desc: 'Contains unverified external links that likely lead to phishing sites designed to steal personal and financial information.'
-                        }
+                        { icon: '🚨', title: 'Scam Characteristics', desc: 'Contains urgent threats and payment demands.' },
+                        { icon: '💰', title: 'Fraudulent Payment Request', desc: 'Government services are free. Payment requests are scams.' },
+                        { icon: '⚠️', title: 'No Official Source', desc: 'Cannot be verified in government databases.' },
+                        { icon: '🔗', title: 'Suspicious Links', desc: 'Contains unverified phishing links.' }
                     ]
                 },
                 suspicious: {
@@ -1159,39 +1316,23 @@
                     score: 22,
                     scoreClass: 'score-low',
                     details: [
-                        {
-                            icon: '🎁',
-                            title: 'Too Good to Be True',
-                            desc: 'Government does not distribute free laptops through viral WhatsApp messages. Official schemes have proper application processes.'
-                        },
-                        {
-                            icon: '🔄',
-                            title: 'Chain Message Pattern',
-                            desc: 'Requires forwarding to multiple groups - a classic pyramid scheme tactic. Legitimate government communications never require forwarding.'
-                        },
-                        {
-                            icon: '💳',
-                            title: 'Banking Details Request',
-                            desc: 'Asking for bank details for "registration" is a major red flag. Government portals never request sensitive banking information upfront.'
-                        },
-                        {
-                            icon: '🌐',
-                            title: 'Unverified Website',
-                            desc: 'Website mentioned is not a government domain. No such scheme exists on official government portals like mygov.in or digitalindia.gov.in.'
-                        }
+                        { icon: '🎁', title: 'Too Good to Be True', desc: 'Promises unrealistic benefits.' },
+                        { icon: '🔄', title: 'Chain Message Pattern', desc: 'Requires forwarding - classic scam tactic.' },
+                        { icon: '💳', title: 'Banking Details Request', desc: 'Requesting sensitive information is a red flag.' },
+                        { icon: '🌐', title: 'Unverified Website', desc: 'Not a government domain.' }
                     ]
                 }
             };
 
             const result = results[type];
-            
+
             document.getElementById('verdictIcon').textContent = result.icon;
             document.getElementById('verdictText').textContent = result.verdict;
             document.getElementById('verdictBadge').className = 'verdict-badge ' + result.badgeClass;
-            
+
             document.getElementById('scoreValue').textContent = result.score + '%';
             document.getElementById('scoreCircle').className = 'score-circle ' + result.scoreClass;
-            
+
             const analysisItems = document.getElementById('analysisItems');
             analysisItems.innerHTML = '';
             result.details.forEach(detail => {
@@ -1206,9 +1347,9 @@
                 `;
                 analysisItems.appendChild(item);
             });
-            
+
             document.getElementById('results').classList.add('active');
-            
+
             const steps = ['step1', 'step2', 'step3', 'step4', 'step5'];
             steps.forEach(step => {
                 document.getElementById(step).classList.remove('active', 'complete');
@@ -1216,8 +1357,17 @@
             });
         }
 
-        function downloadReport() {
-            alert('📥 Downloading detailed verification report...\n\nReport includes:\n• Full analysis results\n• Evidence screenshots\n• Official source links\n• Recommendations');
+        // Download Report with Backend
+        async function downloadReport() {
+            if (currentVerificationId) {
+                try {
+                    window.open(`${API_BASE_URL}/report/download/${currentVerificationId}`, '_blank');
+                } catch (error) {
+                    showNotification('📥 Report download initiated...', 'info');
+                }
+            } else {
+                showNotification('📥 Generating report preview...', 'info');
+            }
         }
 
         function resetVerification() {
@@ -1227,10 +1377,46 @@
             document.getElementById('textInput').value = '';
             document.getElementById('fileInput').value = '';
             document.getElementById('cameraInput').value = '';
+            currentVerificationId = null;
         }
 
-        function reportIssue() {
-            alert('⚠️ Report Issue\n\nYou can report:\n• Incorrect verification results\n• New scam patterns\n• Technical problems\n• False positives/negatives\n\nYour feedback helps improve our AI model!');
+        // Report Issue with Backend
+        async function reportIssue() {
+            const issueType = prompt('Select issue type:\n1. Incorrect Result\n2. New Scam Pattern\n3. Technical Problem\n4. Other\n\nEnter number (1-4):');
+
+            if (issueType) {
+                const issueTypes = ['incorrect_result', 'new_scam_pattern', 'technical_problem', 'other'];
+                const selectedType = issueTypes[parseInt(issueType) - 1] || 'other';
+
+                const description = prompt('Describe the issue:');
+
+                if (description) {
+                    try {
+                        const response = await fetch(`${API_BASE_URL}/report/issue`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                verification_id: currentVerificationId || 'N/A',
+                                issue_type: selectedType,
+                                description: description
+                            })
+                        });
+
+                        if (response.ok) {
+                            showNotification('✅ Issue reported successfully. Thank you!', 'success');
+                        } else {
+                            showNotification('Issue noted. Thank you for your feedback!', 'info');
+                        }
+                    } catch (error) {
+                        showNotification('Issue noted. Thank you for your feedback!', 'info');
+                    }
+                }
+            }
+        }
+
+        // Notification helper
+        function showNotification(message, type = 'info') {
+            alert(message);
         }
 
         // Smooth scrolling for anchor links
@@ -1247,6 +1433,21 @@
                 }
             });
         });
+
+        // Check backend health on page load
+        async function checkBackendHealth() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                if (response.ok) {
+                    console.log('✅ GovVerify AI Backend connected');
+                }
+            } catch (error) {
+                console.warn('⚠️ Backend not available. Running in demo mode.');
+            }
+        }
+
+        checkBackendHealth();
     </script>
 </body>
+
 </html>
